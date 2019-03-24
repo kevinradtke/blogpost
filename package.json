@@ -1,0 +1,16 @@
+{
+  "name": "blog-post",
+  "version": "1.0.0",
+  "description": "Server side API with four basic functions of persistent storage (CRUD)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Kevin Radtke",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
+  }
+}
