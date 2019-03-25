@@ -38,12 +38,17 @@ app.get('/blog-posts', (req,res) => {
     })
 })
 
-app.get('/blog-posts/:author', (req,res) => {
-
-    let author = req.params.author
+app.get('/blog-posts/:author*?', (req,res) => {
 
     //406 IF AUTHOR MISSING IN PATH VARIABLES
+    if (!(req.params.author)) {
+        res.status(406).json({
+            message: `Missing field author in params.`,
+            status: 406
+        })
+    }
 
+    let author = req.params.author
 
     var match = []
     postsArray.forEach(function(item,index) {
@@ -90,10 +95,15 @@ app.post('/blog-posts', (req,res) => {
     })
 })
 
-app.delete('/blog-posts/:id', (req,res) => {
+app.delete('/blog-posts/:id*?', (req,res) => {
 
     //406 IF ID MISSING IN PARAMS
-    
+    if (!(req.params.id)) {
+        res.status(406).json({
+            message: `Missing field id in params.`,
+            status: 406
+        })
+    }
 
     if (!("id" in req.body)) {
         res.status(406).json({
@@ -126,12 +136,17 @@ app.delete('/blog-posts/:id', (req,res) => {
     })
 })
 
-app.put('/blog-posts/:id', (req,res) => {
-
-    let id = req.params.id
+app.put('/blog-posts/:id*?', (req,res) => {
 
     //STATUS 406 IF ID MISSING IN PARAMS
+    if (!(req.params.id)) {
+        res.status(406).json({
+            message: `Missing field id in params.`,
+            status: 406
+        })
+    }
 
+    let id = req.params.id
 
     if (req.body.length == 0) {
         res.status(404).json({
